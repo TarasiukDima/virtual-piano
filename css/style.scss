@@ -36,6 +36,10 @@ body {
     flex: 0 0 auto;
 }
 
+:not(:root):fullscreen::backdrop {
+    background-color: $bgPage;
+}
+
 h1,
 h2,
 h3,
@@ -141,6 +145,7 @@ img {
         border-radius: 0 0 15px 15px;
         pointer-events: auto;
         cursor: pointer;
+        transform-origin: center top;
 
         &:before {
             content: attr(data-letter);
@@ -152,8 +157,38 @@ img {
             font-size: 20px;
             line-height: 20px;
             text-align: center;
-            color: #fff;
+            color: #dadada;
+            transition: 0.3s;
             pointer-events: none;
+        }
+
+        &:hover:before {
+            color: #fff;
+        }
+
+        &:active {
+            animation: pressBtn 0.3s;
+        }
+    }
+
+    .active__btn {
+        animation: pressBtn 0.3s;
+    }
+
+    @keyframes pressBtn {
+        0% {
+            transform: scale(1);
+
+            &:before {
+                color: #dadada;
+            }
+        }
+        100% {
+            transform: scale(0.97);
+
+            &:before {
+                color: #10b864;
+            }
         }
     }
 }
@@ -172,10 +207,14 @@ img {
 
     .piano__btn {
         width: 12%;
-        background-color: #fff;
+        background-color: #dadada;
 
         &:before {
             bottom: -30px;
+        }
+
+        &:hover {
+            background-color: #fff;
         }
     }
 }
@@ -226,7 +265,7 @@ img {
 
         &:hover {
             transform: translateY(-5px);
-            filter: drop-shadow(0 0 10px #e4e4e4);
+            filter: drop-shadow(0 0 10px #dadada);
         }
 
         &:before {

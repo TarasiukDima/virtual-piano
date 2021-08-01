@@ -385,6 +385,22 @@ body {
           flex: 0 0 auto;
 }
 
+:not(:root):-webkit-full-screen::backdrop {
+  background-color: #2f3741;
+}
+
+:not(:root):-moz-full-screen::backdrop {
+  background-color: #2f3741;
+}
+
+:not(:root):-ms-fullscreen::backdrop {
+  background-color: #2f3741;
+}
+
+:not(:root):fullscreen::backdrop {
+  background-color: #2f3741;
+}
+
 h1,
 h2,
 h3,
@@ -501,6 +517,8 @@ img {
   border-radius: 0 0 15px 15px;
   pointer-events: auto;
   cursor: pointer;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
 }
 
 .piano .piano__btn:before {
@@ -513,8 +531,58 @@ img {
   font-size: 20px;
   line-height: 20px;
   text-align: center;
-  color: #fff;
+  color: #dadada;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   pointer-events: none;
+}
+
+.piano .piano__btn:hover:before {
+  color: #fff;
+}
+
+.piano .piano__btn:active {
+  -webkit-animation: pressBtn 0.3s;
+          animation: pressBtn 0.3s;
+}
+
+.piano .active__btn {
+  -webkit-animation: pressBtn 0.3s;
+          animation: pressBtn 0.3s;
+}
+
+@-webkit-keyframes pressBtn {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    .piano:before {
+      color: #dadada;
+    }
+  }
+  100% {
+    -webkit-transform: scale(0.97);
+            transform: scale(0.97);
+    .piano:before {
+      color: #10b864;
+    }
+  }
+}
+
+@keyframes pressBtn {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    .piano:before {
+      color: #dadada;
+    }
+  }
+  100% {
+    -webkit-transform: scale(0.97);
+            transform: scale(0.97);
+    .piano:before {
+      color: #10b864;
+    }
+  }
 }
 
 .active__notes .piano__btn:before {
@@ -536,11 +604,15 @@ img {
 
 .white__btns .piano__btn {
   width: 12%;
-  background-color: #fff;
+  background-color: #dadada;
 }
 
 .white__btns .piano__btn:before {
   bottom: -30px;
+}
+
+.white__btns .piano__btn:hover {
+  background-color: #fff;
 }
 
 .sharp__btns {
@@ -597,8 +669,8 @@ img {
 .footer .link__item:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
-  -webkit-filter: drop-shadow(0 0 10px #e4e4e4);
-          filter: drop-shadow(0 0 10px #e4e4e4);
+  -webkit-filter: drop-shadow(0 0 10px #dadada);
+          filter: drop-shadow(0 0 10px #dadada);
 }
 
 .footer .link__item:before {
