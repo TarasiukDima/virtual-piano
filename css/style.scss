@@ -29,7 +29,7 @@ body {
 
 .main {
     flex: 1 0 auto;
-    padding: 60px;
+    padding: 60px 0;
 }
 
 .footer {
@@ -129,15 +129,37 @@ img {
 
 .piano {
     position: relative;
+    z-index: 1;
     width: 560px;
     height: 250px;
-    margin: 50px auto 0;
+    margin: 80px auto 0;
 
     .piano__btn {
+        position: relative;
+        z-index: 1;
         height: 100%;
         border-radius: 0 0 15px 15px;
+        pointer-events: auto;
         cursor: pointer;
+
+        &:before {
+            content: attr(data-letter);
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: center;
+            color: #fff;
+            pointer-events: none;
+        }
     }
+}
+
+.active__notes .piano__btn:before {
+    content: attr(data-note);
 }
 
 .btns__wrap {
@@ -151,6 +173,10 @@ img {
     .piano__btn {
         width: 12%;
         background-color: #fff;
+
+        &:before {
+            bottom: -30px;
+        }
     }
 }
 
@@ -168,6 +194,10 @@ img {
     .piano__btn {
         width: 12%;
         background-color: #272e36;
+
+        &:before {
+            top: -35px;
+        }
     }
 
     .none {
@@ -192,12 +222,19 @@ img {
         position: relative;
         z-index: 1;
         display: block;
-        height: 50px;
         transition: 0.3s;
 
         &:hover {
-            filter: drop-shadow(0 0 10px #c1aa94);
             transform: translateY(-5px);
+            filter: drop-shadow(0 0 10px #e4e4e4);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: invert(80%);
         }
     }
 
@@ -207,10 +244,6 @@ img {
         color: #fff;
 
         &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 50px;
             height: 50px;
             background: url(../img/github.png) no-repeat center center;
@@ -222,12 +255,9 @@ img {
         position: relative;
         z-index: 1;
         width: 250px;
+        height: 50px;
 
         &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             background: url(../img/rss.svg) no-repeat center center;
@@ -237,3 +267,97 @@ img {
 }
 /* footer end */
 
+
+/*   media   start */
+/*     576 - 1150    */
+@media screen and (min-width: 576px) and (max-width: 1150px) {
+    .wrapper {
+        width: 90%;
+    }
+}
+/*     576 - 1150    */
+
+/*  <    575    */
+@media screen and (max-width: 575px) {
+    .main {
+        padding: 60px 15px;
+    }
+
+    .wrapper {
+        padding: 0 15px;
+    }
+    /* common end */
+
+    /* header start */
+    .header {
+        padding: 20px 0;
+
+        .header__logo {
+            font-size: 30px;
+        }
+
+        .full__screen {
+            right: 15px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    /* header end */
+
+    /* main content start */
+    .varients__wrap {
+        .btn {
+            padding: 10px 30px;
+        }
+    }
+
+    .piano {
+        width: 100%;
+        height: 170px;
+        margin: 60px auto 0;
+
+        .piano__btn {
+            border-radius: 0 0 8px 8px;
+
+            &:before {
+                font-size: 16px;
+                line-height: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .white__btns .piano__btn:before {
+        bottom: -20px;
+    }
+
+    .sharp__btns {
+        height: 110px;
+
+        .piano__btn:before {
+            top: -25px;
+        }
+    }
+    /* main content end */
+
+    /* footer start */
+    .footer {
+        .github__link {
+            padding-left: 45px;
+            line-height: 40px;
+
+            &:before {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .school__link {
+            width: 110px;
+            height: 40px;
+        }
+    }
+    /* footer end */
+}
+/*  <    575    */
+/*   media   end */
