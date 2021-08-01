@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // play music
         _playSound(soundName) {
-            const audio = new Audio(`/audio/${soundName}.mp3`);
+            const audio = new Audio(`./audio/${soundName}.mp3`);
             audio.play();
 
             audio.addEventListener('ended', function () {
